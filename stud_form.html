@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="title has-text-centered">Input and display ( Form )</h1>
+
+        <!-- Input Form -->
+        <div class="box">
+            <table class="table is-fullwidth">
+                <tr>
+                    <th>Requirements:</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input id="name" class="input" type="text" placeholder="Enter Name"></td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td><input id="age" class="input" type="number" placeholder="Enter Age"></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td><input id="gender" class="input" type="text" placeholder="Enter Gender"></td>
+                </tr>
+                <tr>
+                    <td>Course:</td>
+                    <td><input id="course" class="input" type="text" placeholder="Enter Course"></td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td><input id="email" class="input" type="email" placeholder="Enter E-mail"></td>
+                </tr>
+            </table>
+            <button class="button is-primary" onclick="update()">Save</button>
+        </div>
+
+
+        <div class="box">
+            <h2 class="subtitle has-text-centered">Saved Data</h2>
+            <table id="displayTable" class="table is-fullwidth is-bordered is-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Course</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function update() {
+
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const course = document.getElementById('course').value;
+            const email = document.getElementById('email').value;
+
+ 
+            if (!name || !age || !gender || !course || !email) {
+                alert("Please fill all the fields!");
+                return;
+            }
+
+            const table = document.getElementById('displayTable').querySelector('tbody');
+            const newRow = table.insertRow();
+
+            newRow.insertCell(0).textContent = name;
+            newRow.insertCell(1).textContent = age;
+            newRow.insertCell(2).textContent = gender;
+            newRow.insertCell(3).textContent = course;
+            newRow.insertCell(4).textContent = email;
+
+            // Clear the form fields
+            document.getElementById('name').value = '';
+            document.getElementById('age').value = '';
+            document.getElementById('gender').value = '';
+            document.getElementById('course').value = '';
+            document.getElementById('email').value = '';
+        }
+    </script>
+</body>
+</html>
